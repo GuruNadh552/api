@@ -63,8 +63,8 @@ def fetch_note_data():
 
 def insert_note_data(data):
     con=sql.connect("internhub.db")
-    sql = "INSERT INTO NOTIFICATION(notification_id,logo, company_name, tag_line,isDelete,isViewed) VALUES(?,?,?,?,?,?)"
-    con.execute(sql,(len(fetch_note_data())+1,data["logo"],data["company_name"],data["tag_line"],"0","0"))
+    sqli = "INSERT INTO NOTIFICATION(notification_id,logo, company_name, tag_line,isDelete,isViewed) VALUES(?,?,?,?,?,?)"
+    con.execute(sqli,(len(fetch_note_data())+1,data["logo"],data["company_name"],data["tag_line"],"0","0"))
     con.commit()
     con.close()
 
@@ -77,8 +77,8 @@ def delete_note_data(id):
 
 def view_note_data(id):
     con=sql.connect("internhub.db")
-    sql="UPDATE NOTIFICATION SET isViewed = ? WHERE notification_id = ?"
-    con.execute(sql,("1",id))
+    sqli="UPDATE NOTIFICATION SET isViewed = ? WHERE notification_id = ?"
+    con.execute(sqli,("1",id))
     con.commit()
     con.close()
 
